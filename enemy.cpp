@@ -2,7 +2,7 @@
 
 Enemy::Enemy()
 {
-    this->setPixmap(":/images/enemy.png");
+    this->setPixmap(QPixmap(":/images/enemy.png"));
     timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(enemyMove()));
     timer->start(100);
@@ -15,4 +15,9 @@ void Enemy::enemyMove()
     {
         delete this;
     }
+}
+
+QRectF Enemy::boundingRect()
+{
+    return QRectF(0,0,100,100);
 }

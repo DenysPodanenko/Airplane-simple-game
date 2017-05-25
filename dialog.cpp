@@ -16,6 +16,9 @@ Dialog::Dialog(QWidget *parent) :
     scene->addItem(player);
     player->setFocus();
 
+    spawnEnemyTime = new QTimer();
+    connect(spawnEnemyTime,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
+    spawnEnemyTime->start(1000);
 
     connect(player,SIGNAL(fire()),this,SLOT(playerShoot()));
 }
@@ -30,4 +33,13 @@ void Dialog::playerShoot()
     bullet = new Bullet();
     bullet->setPos(player->x()+32,player->y()-1);
     scene->addItem(bullet);
+}
+
+void Dialog::spawnEnemy()
+{
+    enemy = new Enemy();
+
+    int a = qrand()%900;
+    enemy->setPos(a,-100);
+    scene->addItem(enemy);
 }

@@ -19,5 +19,13 @@ void Bullet::bulletMove()
     if(this->y()<-20)
     {
         delete this;
+        return;
+    }
+
+    if(!this->collidingItems().isEmpty())
+    {
+        delete collidingItems()[0];
+        delete this;
+        return;
     }
 }

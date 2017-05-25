@@ -3,7 +3,9 @@
 
 #include <QDialog>
 #include <QGraphicsScene>
+#include <QTimer>
 #include <player.h>
+#include <enemy.h>
 #include <bullet.h>
 
 namespace Ui {
@@ -22,11 +24,14 @@ public:
 
     QGraphicsScene* scene;
     Player* player;
+    Enemy *enemy;
 
 public slots:
     void playerShoot();
+    void spawnEnemy();
 private:
     Ui::Dialog *ui;
+    QTimer *spawnEnemyTime;
 };
 
 #endif // DIALOG_H
